@@ -1,0 +1,7 @@
+%%[
+SET @firstName = AttribiteValue("First Name")
+SET @email = AttribiteValue("Email Address")
+]%%
+
+Hello %%=v(@firstName)=%%!
+Your registered email is: %%=v(@email)=%%
