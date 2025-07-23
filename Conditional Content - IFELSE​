@@ -1,0 +1,10 @@
+%%[
+SET @memberType = AttribiteValue("MembershipLevel")
+
+IF @memberType == "Gold" THEN
+ SET @message = "Thanks for being a Gold Member!"
+ELSE
+ SET @message = "Upgrade to Gold for exclusive benefits!"
+]%%
+
+%%=v(@message)=%%
