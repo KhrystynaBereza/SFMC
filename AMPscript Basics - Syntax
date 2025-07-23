@@ -1,0 +1,5 @@
+%%[
+SET @name = "Khrystyna"
+]%%
+
+Hello. %%=v(@name)=%%!
