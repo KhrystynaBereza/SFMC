@@ -1,0 +1,8 @@
+%%[
+SET @firstName = AttribiteValue("First Name")
+If EMPTY(@firstName) THEN
+  SET @firstName = "Valued Customer"
+ENDIF
+]%%
+
+Hello %%=v(@firstName)=%%!
