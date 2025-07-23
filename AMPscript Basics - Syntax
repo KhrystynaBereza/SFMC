@@ -2,4 +2,4 @@
 SET @name = "Khrystyna"
 ]%%
 
-Hello. %%=v(@name)=%%!
+Hello, %%=v(@name)=%%!
