@@ -1,0 +1,37 @@
+%%[
+
+/* Declare variables */
+Var @ServicingTeam, @contactLink, @contactLinkIT, @supportBaseURL
+
+/* Initialize */
+Set @ServicingTeam = AttributeValue("ServicingTeam")
+SET @supportBaseURL = "https://support.hospitality.milanocortina2026.org/s/?language="
+
+/* Set contact link based on ServicingTeam */
+IF @ServicingTeam == 'CG/CI' THEN
+  SET @contactLink = 'mailto:pgm_cgci_mc26@onlocationexp.com'
+ELSEIF @ServicingTeam == 'NOC' THEN
+  SET @contactLink = 'mailto:mc26hospitalitynoc@onlocationexp.com'
+ELSEIF @ServicingTeam == 'NPC' THEN
+  SET @contactLink = 'mailto:mc26hospitalitynpc@onlocationexp.com'
+ELSEIF @ServicingTeam == 'IF' THEN
+  SET @contactLink = 'mailto:mc26hospitalityif@onlocationexp.com'
+ELSEIF @ServicingTeam == 'STK' THEN
+  SET @contactLink = 'mailto:mico2026hospitality@onlocationexp.com'
+ELSEIF @ServicingTeam == 'General Servicing' OR @ServicingTeam == 'Core Servicing' THEN
+  SET @contactLink = CONCAT(@supportBaseURL, "en_US")
+  SET @contactLinkIT = CONCAT(@supportBaseURL, "it")
+ELSEIF @ServicingTeam == 'Premium' OR @ServicingTeam == 'Premium +' THEN
+  SET @contactLink = 'mailto:premiumclientmgmt.mc26@onlocationexp.com'
+ENDIF
+
+/* Fallbacks */
+IF EMPTY(@contactLink) THEN
+  SET @contactLink = CONCAT(@supportBaseURL, "en_US")
+ENDIF
+
+IF EMPTY(@contactLinkIT) THEN
+  SET @contactLinkIT = @contactLink
+ENDIF
+
+]%%
