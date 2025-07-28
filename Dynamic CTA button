@@ -47,4 +47,5 @@ ENDIF
 
 ]%%
 
+CTA button is dynamic block %%=ContentBlockByID(@contentBlockID)=%%
 
