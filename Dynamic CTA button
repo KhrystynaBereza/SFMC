@@ -1,37 +1,50 @@
 %%[
 
-/* Declare variables */
-Var @ServicingTeam, @contactLink, @contactLinkIT, @supportBaseURL
+Var @ServicingTeam, @contactLink, @contactLinkIT, @supportBaseURL, @contentBlockID
 
-/* Initialize */
 Set @ServicingTeam = AttributeValue("ServicingTeam")
 SET @supportBaseURL = "https://support.hospitality.milanocortina2026.org/s/?language="
 
-/* Set contact link based on ServicingTeam */
+/* Default contact link and content block */
+SET @contactLink = CONCAT(@supportBaseURL, "it")
+SET @contentBlockID = 37182
+
 IF @ServicingTeam == 'CG/CI' THEN
-  SET @contactLink = 'mailto:pgm_cgci_mc26@onlocationexp.com'
+  SET @contactLink = 'pgm_cgci_mc26@onlocationexp.com'
+  SET @contentBlockID = 37180
+
 ELSEIF @ServicingTeam == 'NOC' THEN
-  SET @contactLink = 'mailto:mc26hospitalitynoc@onlocationexp.com'
+  SET @contactLink = 'mc26hospitalitynoc@onlocationexp.com'
+  SET @contentBlockID = 37180
+
 ELSEIF @ServicingTeam == 'NPC' THEN
-  SET @contactLink = 'mailto:mc26hospitalitynpc@onlocationexp.com'
+  SET @contactLink = 'mc26hospitalitynpc@onlocationexp.com'
+  SET @contentBlockID = 37180
+
 ELSEIF @ServicingTeam == 'IF' THEN
-  SET @contactLink = 'mailto:mc26hospitalityif@onlocationexp.com'
+  SET @contactLink = 'mc26hospitalityif@onlocationexp.com'
+  SET @contentBlockID = 37180
+
 ELSEIF @ServicingTeam == 'STK' THEN
-  SET @contactLink = 'mailto:mico2026hospitality@onlocationexp.com'
+  SET @contactLink = 'mico2026hospitality@onlocationexp.com'
+  SET @contentBlockID = 37180
+
 ELSEIF @ServicingTeam == 'General Servicing' OR @ServicingTeam == 'Core Servicing' THEN
-  SET @contactLink = CONCAT(@supportBaseURL, "en_US")
-  SET @contactLinkIT = CONCAT(@supportBaseURL, "it")
+  
+  SET @contactLink = CONCAT(@supportBaseURL, "it")
+  SET @contentBlockID = 37182
+
 ELSEIF @ServicingTeam == 'Premium' OR @ServicingTeam == 'Premium +' THEN
-  SET @contactLink = 'mailto:premiumclientmgmt.mc26@onlocationexp.com'
+  SET @contactLink = 'premiumclientmgmt.mc26@onlocationexp.com'
+  SET @contentBlockID = 37180
+
 ENDIF
 
 /* Fallbacks */
-IF EMPTY(@contactLink) THEN
-  SET @contactLink = CONCAT(@supportBaseURL, "en_US")
-ENDIF
-
 IF EMPTY(@contactLinkIT) THEN
   SET @contactLinkIT = @contactLink
 ENDIF
 
 ]%%
+
+
